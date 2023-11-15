@@ -1,0 +1,8 @@
+---
+- name: only gather facts
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: display success message
+      ansible.builtin.debug:
+        msg: "Fact Gathering Complete!"
