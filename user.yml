@@ -1,0 +1,14 @@
+---
+- name: create a user with a password
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    username: admin
+    userpassword: redhat123
+  tasks:
+    - name: create user {{ username }}
+      ansible.builtin.user:
+        name: "{{ username }}"
+        state: present
+        password: "{{ userpassword | password_hash('sha512') }}"
